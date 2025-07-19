@@ -16,13 +16,13 @@ This project includes:
 
 ## Screenshots
 
-### 🔐 Login Screen
-![Login Screen](assets/images/login.png)
-![Login Screen](assets/images/login_valid.png)
+| Login Screen (valid) | Login Screen (InValid) |
+|------------------------|----------------------|
+| ![Login](assets/images/login.PNG) | ![Login Valid](assets/images/login_valid.PNG) |
 
-### 📝 Sign Up Screen
-![Sign Up Screen](assets/images/signup.png)
-![Sign Up Screen](assets/images/signup_valid.png)
+| Sign Up Screen (valid) | Sign Up Screen (InValid) |
+|--------------------------|------------------------|
+| ![Sign Up](assets/images/signup.PNG) | ![Sign Up Valid](assets/images/signup_valid.PNG) |
 
 
 ## Getting Started
