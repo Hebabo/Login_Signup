@@ -1,4 +1,4 @@
-# Hello World Flutter App
+# LogIn & Sign up
 
 A simple Flutter project that demonstrates a modern login and sign-up UI with validation.  
 This app is ideal for learning and experimenting with basic Flutter widgets, form handling, and responsive layouts.
@@ -31,7 +31,7 @@ To run this project on your machine:
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/Hebabo/Login_Signup.git
    cd hello_world
    ```
 
@@ -62,8 +62,6 @@ hello_world/
 ## Resources
 
 - [Flutter Documentation](https://docs.flutter.dev/)
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 ## License
 
