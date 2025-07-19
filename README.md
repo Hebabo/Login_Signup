@@ -14,8 +14,16 @@ This project includes:
 
 ## Screenshots
 
+## Screenshots
+
+### 🔐 Login Screen
 ![Login Screen](assets/images/login.png)
+![Login Screen](assets/images/login_valid.png)
+
+### 📝 Sign Up Screen
 ![Sign Up Screen](assets/images/signup.png)
+![Sign Up Screen](assets/images/signup_valid.png)
+
 
 ## Getting Started
 
