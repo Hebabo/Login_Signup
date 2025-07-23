@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'signin.dart';
+import '../widgets/app_text_form_field.dart';
+import 'package:fluttertoast/fluttertoast.dart'; 
+import 'signin_screen.dart';
+import '../widgets/app_colors.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -59,76 +62,59 @@ class _SignUpState extends State<LogIn> {
                 child: Column(
                   spacing: 15,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 223, 218, 231),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextFormField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(8),
-                          hintText: 'Username',
-                          border: InputBorder.none,
-                          prefixIcon: Icon(Icons.person),
-                        ),
-                      ),
+                    AppTextField(
+                      controller: _nameController,
+                      prefixIcon: Icon(Icons.person),
+                      textContent: 'Username',
                     ),
                     if (_nameError != null)
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, top: 4.0),
                         child: Text(
                           _nameError!,
-                          style: TextStyle(color: Colors.red, fontSize: 12),
+                          style: TextStyle(
+                            color: AppColors.secondaryColor,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 223, 218, 231),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextFormField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(8),
-                          hintText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
-                          border: InputBorder.none,
-                        ),
-                      ),
+                    AppTextField(
+                      controller: _passwordController,
+                      prefixIcon: Icon(Icons.lock),
+                      textContent: 'Password',
+                      obscureText: true,
                     ),
                     if (_passwordError != null)
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, top: 4.0),
                         child: Text(
                           _passwordError!,
-                          style: TextStyle(color: Colors.red, fontSize: 12),
+                          style: TextStyle(
+                            color: AppColors.secondaryColor,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    SizedBox(height: 8),
                     ElevatedButton(
                       onPressed: _validateAndLogin,
-                      child: Text('LOGIN'),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          113,
-                          94,
-                          146,
-                        ),
+                        backgroundColor: AppColors.mainColor,
                         padding: EdgeInsets.symmetric(
                           horizontal: 100,
                           vertical: 15,
                         ),
                       ),
+                      child: Text('LOGIN'),
                     ),
                   ],
                 ),
               ),
             ),
-            Text('Forgot Password?', style: TextStyle(color: Colors.blue)),
+            Text(
+              'Forgot Password?',
+              style: TextStyle(color: AppColors.mainColor),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

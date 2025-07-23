@@ -1,28 +1,37 @@
-# LogIn & Sign up
+# Hello World Flutter App
 
-A simple Flutter project that demonstrates a modern login and sign-up UI with validation.  
-This app is ideal for learning and experimenting with basic Flutter widgets, form handling, and responsive layouts.
+A clean Flutter project that demonstrates a modern login and sign-up UI, along with a dynamic home screen that fetches a list of food categories from a public API.
 
-## Project Overview
+## ✨ Features
 
-This project includes:
-- A login screen with username and password validation.
-- A sign-up screen with username, email, password, and confirm password validation.
-- Error messages displayed below each field for better user experience.
-- A responsive and centered layout for all screens.
-- Example buttons for social sign-in (Google).
+- Login screen with validation and SnackBar feedback
+- Sign-up screen with matching clean UI
+- TextFormField inputs wrapped in a reusable widget (`AppTextField`)
+- Consistent color scheme using a centralized `AppColors` file
+- Home screen that fetches and displays food categories from the network
+- Bottom navigation bar to switch between Login, Signup, and Home screens
+
+## 🌐 API Integration
+
+The home screen uses a real API — [TheMealDB](https://www.themealdb.com/api.php) — to fetch and display food categories.  
+Each list item includes:
+- A thumbnail image
+- Category title
+- A brief description
+
+> 💡 This is like a past project I did using API, I previously worked with in a JavaScript project. This time, I integrated it using Dart and the `http` package in Flutter.
+
+## 📸 Screenshots
 
 ## Screenshots
 
-## Screenshots
+### 🔐 Login Screen
+![Login Screen](assets/images/login.png)
+![Login Screen](assets/images/login_valid.png)
 
-| Login Screen (valid) | Login Screen (InValid) |
-|------------------------|----------------------|
-| ![Login](assets/images/login.PNG) | ![Login Valid](assets/images/login_valid.PNG) |
-
-| Sign Up Screen (valid) | Sign Up Screen (InValid) |
-|--------------------------|------------------------|
-| ![Sign Up](assets/images/signup.PNG) | ![Sign Up Valid](assets/images/signup_valid.PNG) |
+### 📝 Sign Up Screen
+![Sign Up Screen](assets/images/signup.png)
+![Sign Up Screen](assets/images/signup_valid.png)
 
 
 ## Getting Started
@@ -31,7 +40,7 @@ To run this project on your machine:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/Hebabo/Login_Signup.git
+   git clone <your-repo-url>
    cd hello_world
    ```
 
@@ -40,28 +49,36 @@ To run this project on your machine:
    flutter pub get
    ```
 
-3. **Run the app:**
-   ```sh
+4. Run the app:
+
+   ```bash
    flutter run
    ```
 
-## Folder Structure
+## 📦 Packages Used
+
+* [`http`](https://pub.dev/packages/http) – For making API requests
+
+## 🛠️ Folder Structure
 
 ```
-hello_world/
-├── assets/
-│   └── images/
-├── lib/
-│   ├── main.dart
-│   ├── login.dart
-│   └── signin.dart
-├── README.md
-└── ...
+lib/
+├── main.dart
+├── views/
+│   ├── login_screen.dart
+│   ├── signin_screen.dart
+│   ├── home_screen.dart
+│   └── main_navigation.dart
+├── widgets/
+│   ├── app_text_form_field.dart
+│   └── app_colors.dart
 ```
 
 ## Resources
 
 - [Flutter Documentation](https://docs.flutter.dev/)
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 ## License
 

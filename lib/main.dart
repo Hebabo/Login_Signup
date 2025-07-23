@@ -1,5 +1,6 @@
+// main.dart
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'views/main_navigation.dart'; // adjust path if needed
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Food App',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const LogIn(),
+      home: MainNavigation(),
     );
   }
 }
