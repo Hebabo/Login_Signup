@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_text_form_field.dart';
-import 'package:fluttertoast/fluttertoast.dart'; 
 import 'signin_screen.dart';
-import '../widgets/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -48,9 +47,9 @@ class _SignUpState extends State<LogIn> {
                 children: [
                   Text(
                     'Welcome Back',
-                    style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.displayLarge,
                   ),
-                  Text('Login', style: TextStyle(fontSize: 18)),
+                  Text('Login', style: Theme.of(context).textTheme.bodyLarge),
                 ],
               ),
             ),
@@ -97,14 +96,6 @@ class _SignUpState extends State<LogIn> {
                       ),
                     ElevatedButton(
                       onPressed: _validateAndLogin,
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: AppColors.mainColor,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 100,
-                          vertical: 15,
-                        ),
-                      ),
                       child: Text('LOGIN'),
                     ),
                   ],

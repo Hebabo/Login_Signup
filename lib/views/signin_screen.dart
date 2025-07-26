@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/widgets/app_colors.dart';
+import '../utils/app_colors.dart';
 
 import '../widgets/app_text_form_field.dart';
 
@@ -154,14 +154,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ElevatedButton(
                       onPressed: _validateAndSignUp,
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: AppColors.mainColor,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 15,
-                        ),
-                      ),
+
                       child: Text('Sign up'),
                     ),
                     Text('or', style: TextStyle(color: Colors.blue)),

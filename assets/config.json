@@ -1,0 +1,58 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "30b79160618d99ce798e4bd11cafe3fe",
+      "css": "food",
+      "code": 61685,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d27bcf5c8638e4078aaadae1d49b6909",
+      "css": "fast-food",
+      "code": 59413,
+      "src": "maki"
+    },
+    {
+      "uid": "b08f8c33777cd6b512d9576fc6e7f405",
+      "css": "food-1",
+      "code": 59392,
+      "src": "linecons"
+    },
+    {
+      "uid": "97a6bef785d3f4b39a96301d0fab3b03",
+      "css": "cake",
+      "code": 59393,
+      "src": "material"
+    },
+    {
+      "uid": "f3dc2d6d8fe9cf9ebff84dc260888cdf",
+      "css": "heart-empty",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d73eceadda1f594cec0536087539afbf",
+      "css": "heart-1",
+      "code": 59396,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "a9d3392264236bb9fe4d60a130c662d1",
+      "css": "fire-station",
+      "code": 59415,
+      "src": "maki"
+    },
+    {
+      "uid": "e47a9c01f1a64c67e90f77663a17b4be",
+      "css": "brightness_6",
+      "code": 59394,
+      "src": "material"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 // app_text_form_field.dart
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import '../utils/app_colors.dart';
 
 class AppTextField extends StatelessWidget {
   final String? textContent;
@@ -23,7 +23,7 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.lightmainColor,
+        color: AppColors.lightMainColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
