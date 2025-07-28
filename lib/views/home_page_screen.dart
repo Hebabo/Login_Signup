@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      food['like'] = food['like'] == '1'
+                                      food['like'] = (food['like'] == '1')
                                           ? '0'
                                           : '1';
                                     });

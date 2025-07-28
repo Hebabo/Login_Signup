@@ -1,127 +1,127 @@
 import 'package:flutter/material.dart';
-import '../widgets/app_text_form_field.dart';
-import 'signin_screen.dart';
-import '../utils/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class LogIn extends StatefulWidget {
+import '../auth/bloc/login_bloc/login_bloc.dart';
+import '../auth/bloc/signup_bloc/signup_bloc.dart';
+import '../utils/app_colors.dart';
+import '../widgets/app_text_form_field.dart';
+
+class LogIn extends StatelessWidget {
   const LogIn({super.key});
 
   @override
-  State<LogIn> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<LogIn> {
-  final _formKey = GlobalKey<FormState>();
-  String? _nameError;
-  String? _passwordError;
-  final _nameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  void _validateAndLogin() {
-    setState(() {
-      _nameError = _nameController.text.isEmpty
-          ? 'Please enter your username'
-          : null;
-      _passwordError = _passwordController.text.isEmpty
-          ? 'Please enter your password'
-          : null;
-    });
-
-    if (_nameError == null && _passwordError == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Logging in...')));
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    'Welcome Back',
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                  Text('Login', style: Theme.of(context).textTheme.bodyLarge),
-                ],
-              ),
-            ),
-            Form(
-              key: _formKey, // <-- Wrap fields in Form
-              child: Container(
-                width: 300,
+    final TextEditingController userNameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
 
-                child: Column(
-                  spacing: 15,
-                  children: [
-                    AppTextField(
-                      controller: _nameController,
-                      prefixIcon: Icon(Icons.person),
-                      textContent: 'Username',
-                    ),
-                    if (_nameError != null)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0, top: 4.0),
-                        child: Text(
-                          _nameError!,
-                          style: TextStyle(
-                            color: AppColors.secondaryColor,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    AppTextField(
-                      controller: _passwordController,
-                      prefixIcon: Icon(Icons.lock),
-                      textContent: 'Password',
-                      obscureText: true,
-                    ),
-                    if (_passwordError != null)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0, top: 4.0),
-                        child: Text(
-                          _passwordError!,
-                          style: TextStyle(
-                            color: AppColors.secondaryColor,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ElevatedButton(
-                      onPressed: _validateAndLogin,
-                      child: Text('LOGIN'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Text(
-              'Forgot Password?',
-              style: TextStyle(color: AppColors.mainColor),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return Center(
+      child: Scaffold(
+        body: BlocConsumer<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state is LoginSuccessState) {
+              Fluttertoast.showToast(
+                msg: "LogIn Successful!",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+              );
+              Navigator.pop(context); // Navigate back to the login screen
+            } else if (state is LoginFailureState) {
+              Fluttertoast.showToast(
+                msg: 'Failed to LogIn: ${state.error}',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.red[400],
+                webBgColor: 'linear-gradient(to right, #FF0000, #A05733)',
+              );
+            }
+          },
+          builder: (context, state) {
+            return Stack(
               children: [
-                Text('Don\'t have an account?'),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn()),
-                    );
-                  },
-                  child: Text('Sign Up'),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Welcome Back',
+                              style: Theme.of(context).textTheme.displayLarge,
+                            ),
+                            Text(
+                              'Login',
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Container(
+                        width: 300,
+
+                        child: Column(
+                          spacing: 15,
+                          children: [
+                            AppTextField(
+                              controller: userNameController,
+                              prefixIcon: Icon(Icons.person),
+                              textContent: 'Username',
+                            ),
+
+                            AppTextField(
+                              controller: passwordController,
+                              prefixIcon: Icon(Icons.lock),
+                              textContent: 'Password',
+                              obscureText: true,
+                            ),
+
+                            ElevatedButton(
+                              onPressed: () {
+                                BlocProvider.of<LoginBloc>(context).add(
+                                  LoginInitialEvent(
+                                    username: userNameController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                );
+                              },
+                              child: Text('LOGIN'),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: AppColors.mainColor),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Don\'t have an account?'),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LogIn(),
+                                ),
+                              );
+                            },
+                            child: Text('Sign Up'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
+                if (state is SignupLoadingState)
+                  const Center(child: CircularProgressIndicator()),
               ],
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

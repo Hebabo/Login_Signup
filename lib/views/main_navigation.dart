@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'home_page_screen.dart';
 import 'login_screen.dart';
 import 'signin_screen.dart';
+import 'profile_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -15,7 +16,11 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [LogIn(), SignIn(), HomePage()];
+  final List<Widget> _screens = [
+    LogIn(),
+    HomePage(),
+    Profile(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +35,8 @@ class _MainNavigationState extends State<MainNavigation> {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_add),
-            label: 'Sign Up',
-          ),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );
