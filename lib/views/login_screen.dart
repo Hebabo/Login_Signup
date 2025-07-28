@@ -25,7 +25,6 @@ class LogIn extends StatelessWidget {
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.CENTER,
               );
-              Navigator.pop(context); // Navigate back to the login screen
             } else if (state is LoginFailureState) {
               Fluttertoast.showToast(
                 msg: 'Failed to LogIn: ${state.error}',

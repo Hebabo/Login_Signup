@@ -5,13 +5,22 @@ A clean Flutter project that demonstrates a modern login and sign-up UI, along w
 
 ## ✨ Features
 
-- Login screen with validation and SnackBar feedback  
+- Login screen with validation and SnackBar/Toast feedback  
 - Sign-up screen with matching clean UI  
 - TextFormField inputs wrapped in a reusable widget (`AppTextField`)  
 - **Consistent app-wide theming** using `ThemeData` and a centralized `AppTheme`  
 - Color palette extracted into `AppColors` for easy reuse  
 - Home screen that fetches and displays food categories from the network  
-- Bottom navigation bar to switch between Login, Signup, and Home screens  
+- Bottom navigation bar to switch between Home, Login, and **Profile (replacing Signup)**  
+- **Profile screen** added and is currently under development  
+- **Bloc state management** implemented for Login and Signup workflows
+
+## 🧠 State Management
+
+This app uses the **Bloc (Business Logic Component)** pattern for state management:
+- Handles form validation and UI state changes efficiently  
+- Bloc logic is separated for Login and Signup (`login_bloc`, `signup_bloc`)  
+- Emits loading, success, and failure states for better user feedback and flow control  
 
 ## 🎨 Theming
 
@@ -69,27 +78,43 @@ To run this project on your machine:
    flutter run
    ```
 
-## 📦 Packages Used
+## 📦 Dependencies Used
 
-* [`http`](https://pub.dev/packages/http) – For making API requests
+| Package                                                 | Purpose                                |
+| ------------------------------------------------------- | -------------------------------------- |
+| [`http`](https://pub.dev/packages/http)                 | For making API requests                |
+| [`flutter_bloc`](https://pub.dev/packages/flutter_bloc) | Bloc state management                  |
+| [`fluttertoast`](https://pub.dev/packages/fluttertoast) | Displaying toast messages for feedback |
 
 ## 🛠️ Folder Structure
 
 ```
 lib/
 ├── main.dart
+├── auth/
+│   ├── auth/
+│       ├── login_bloc/
+|            ├── login_bloc.dart
+|            ├── login_event.dart
+|            ├── login_state.dart
+│       ├── signup_bloc/
+|            ├── signup_bloc.dart
+|            ├── signup_event.dart
+|            ├── signup_state.dart
 ├── utils/
 │   ├── app_colors.dart
 │   ├── app_themes.dart
 │   ├── my_flutter_app_icons.dart
+│   ├── login_form_validator.dart
+│   ├── signup_form_validator.dart
 ├── views/
+│   ├── profile_screen.dart   # under development
 │   ├── login_screen.dart
 │   ├── signin_screen.dart
 │   ├── home_screen.dart
 │   └── main_navigation.dart
 ├── widgets/
 │   ├── app_text_form_field.dart
-│   └── app_colors.dart
 ```
 
 ## 📚 Resources
@@ -108,7 +133,3 @@ Feel free to use and modify for your own learning.
 **Tip:**
 For best results, use the official Android Emulator or Genymotion.
 
-```
-
-Let me know if you want to add anything about custom icons or the MealDB API usage code.
-```
