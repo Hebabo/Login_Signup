@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import '../../../utils/signup_form_validator.dart'; 
+import '../../../utils/signup_form_validator.dart';
 
 part 'signup_event.dart';
 part 'signup_state.dart';
@@ -21,7 +21,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   ) async {
     emit(SignupLoadingState());
 
-    await Future.delayed(const Duration(seconds: 2)); 
+    await Future.delayed(const Duration(seconds: 2));
 
     final errors = SignUpValidator.validateSignUpFields(
       email: event.email,

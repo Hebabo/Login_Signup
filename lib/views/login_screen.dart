@@ -6,6 +6,7 @@ import '../auth/bloc/login_bloc/login_bloc.dart';
 import '../auth/bloc/signup_bloc/signup_bloc.dart';
 import '../utils/app_colors.dart';
 import '../widgets/app_text_form_field.dart';
+import 'signin_screen.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({super.key});
@@ -105,7 +106,7 @@ class LogIn extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => LogIn(),
+                                  builder: (context) => SignIn(),
                                 ),
                               );
                             },

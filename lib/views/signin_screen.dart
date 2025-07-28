@@ -26,6 +26,7 @@ class SignIn extends StatelessWidget {
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.CENTER,
               );
+              Navigator.pop(context);
             } else if (state is SignupFailureState) {
               Fluttertoast.showToast(
                 msg: 'Failed to sign up: ${state.error}',
@@ -37,89 +38,99 @@ class SignIn extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return Stack(
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      width: 300,
-                      child: Column(
-                        spacing: 15,
-                        children: [
-                          Text(
-                            'Sign Up',
-                            style: Theme.of(context).textTheme.displayLarge,
-                          ),
-                          Text(
-                            'Create anaccount',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                          AppTextField(
-                            controller: userNameController,
-                            prefixIcon: Icon(Icons.person),
-                            textContent: "Username",
-                          ),
-                          AppTextField(
-                            controller: emailController,
-                            prefixIcon: Icon(Icons.email),
-                            textContent: "Email",
-                          ),
-                          AppTextField(
-                            controller: passwordController,
-                            prefixIcon: Icon(Icons.lock),
-                            textContent: 'Password',
-                            obscureText: true,
-                          ),
-                          AppTextField(
-                            controller: confirmPasswordController,
-                            textContent: "Confirm Password",
-                            obscureText: true,
-                            prefixIcon: Icon(Icons.lock),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              BlocProvider.of<SignupBloc>(context).add(
-                                SignupInitialEvent(
-                                  username: userNameController.text.trim(),
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim(),
-                                  confirmPassword: confirmPasswordController
-                                      .text
-                                      .trim(),
-                                ),
-                              );
-                            },
-                            child: const Text("Sign Up"),
-                          ),
-                          Text('or'),
-                          ElevatedButton(
-                            onPressed: () {
-                              BlocProvider.of<SignupBloc>(
-                                context,
-                              ).add(SignupSuccessEvent());
-                            },
-                            child: const Text("SignIn with google"),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                Stack(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
+                          width: 300,
+                          child: Column(
+                            spacing: 15,
                             children: [
-                              const Text("Already have an account?"),
-                              TextButton(
+                              Text(
+                                'Sign Up',
+                                style: Theme.of(context).textTheme.displayLarge,
+                              ),
+                              Text(
+                                'Create anaccount',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              AppTextField(
+                                controller: userNameController,
+                                prefixIcon: Icon(Icons.person),
+                                textContent: "Username",
+                              ),
+                              AppTextField(
+                                controller: emailController,
+                                prefixIcon: Icon(Icons.email),
+                                textContent: "Email",
+                              ),
+                              AppTextField(
+                                controller: passwordController,
+                                prefixIcon: Icon(Icons.lock),
+                                textContent: 'Password',
+                                obscureText: true,
+                              ),
+                              AppTextField(
+                                controller: confirmPasswordController,
+                                textContent: "Confirm Password",
+                                obscureText: true,
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  BlocProvider.of<SignupBloc>(context).add(
+                                    SignupInitialEvent(
+                                      username: userNameController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                      confirmPassword: confirmPasswordController
+                                          .text
+                                          .trim(),
+                                    ),
+                                  );
                                 },
-                                child: const Text("Login"),
+                                child: const Text("Sign Up"),
+                              ),
+                              Text('or'),
+                              ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<SignupBloc>(
+                                    context,
+                                  ).add(SignupSuccessEvent());
+                                },
+                                child: const Text("SignIn with google"),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text("Already have an account?"),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Login"),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                    // if (state is SignupLoadingState)
+                    //   const Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.center,
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [CircularProgressIndicator()],
+                    //   ),
+                  ],
                 ),
-                if (state is SignupLoadingState)
-                  const Center(child: CircularProgressIndicator()),
               ],
             );
           },

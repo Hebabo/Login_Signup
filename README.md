@@ -45,16 +45,16 @@ Each list item includes:
 ## 📸 Screenshots
 
 ### 🔐 Login Screen
-![Login Screen](assets/images/login.PNG)  
-![Login Screen](assets/images/login_valid.PNG)
+![Login Screen](assets/images/login_valid.PNG)  
+![Login Screen](assets/images/login_invalid.PNG)
 
 ### 📝 Sign Up Screen
-![Sign Up Screen](assets/images/signup.PNG)  
-![Sign Up Screen](assets/images/signup_valid.PNG)
+![Sign Up Screen](assets/images/signup_valid.PNG)  
+![Sign Up Screen](assets/images/signup_invalid.PNG)
 
 ### 🏠 Home Screen
 ![Home Screen](assets/images/home.PNG)  
-![Home Loading Screen](assets/images/home_load.PNG.PNG)
+![Home Loading Screen](assets/images/home_load.PNG)
 
 ## 🚀 Getting Started
 
@@ -62,9 +62,9 @@ To run this project on your machine:
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
-   cd hello_world
-````
+   git clone https://github.com/Hebabo/Login_Signup.git
+   cd Login_Signup
+   ```
 
 2. **Install dependencies:**
 
@@ -132,4 +132,3 @@ Feel free to use and modify for your own learning.
 
 **Tip:**
 For best results, use the official Android Emulator or Genymotion.
-
